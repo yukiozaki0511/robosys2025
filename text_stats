@@ -1,0 +1,47 @@
+#!/usr/bin/python3
+# SPDX-FileCopyrightText: 2025 Yuki Ozaki
+# SPDX-License-Identifier: BSD-3-Clause
+
+import sys
+import re
+
+def calculate_stats(text):
+    stats = {}
+    stats['chars'] = len(text)
+
+    if not text:
+        stats['lines'] = 0
+        stats['words'] = 0
+        stats['unique_words'] = 0
+        stats['longest_line'] = 0
+        return stats
+
+    stats['lines'] = text.count('\n')
+    if not text.endswith('\n'):
+        stats['lines'] += 1
+
+    words = re.findall(r'\b\w+\b', text)
+    stats['words'] = len(words)
+
+    unique_words = set(word.lower() for word in words)
+    stats['unique_words'] = len(unique_words)
+
+    line_sizes = [len(line) for line in text.splitlines()]
+    stats['longest_line'] = max(line_sizes, default=0)
+
+    return stats
+
+def format_output(stats):
+    return f"""\
+--- Text Statistics ---
+Lines Count:         {stats['lines']}
+Word Count:          {stats['words']}
+Character Count:     {stats['chars']}
+Unique Words Count: {stats['unique_words']}
+Longest Line Chars: {stats['longest_line']}
+"""
+
+if __name__ == '__main__':
+    input_text = sys.stdin.read()
+    stats = calculate_stats(input_text)
+    print(format_output(stats))
