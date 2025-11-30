@@ -1,5 +1,5 @@
 # text_stats
-[![test](https://github.com/Ryuki-Ozaki/robosys2025/actions/workflows/test.yml/badge.svg)](https://github.com/Ryuki-Ozaki/robosys2025/actions/workflows/test.yml)
+[![test](https://github.com/yukiozaki0511/robosys2025/actions/workflows/test.yml/badge.svg)](https://github.com/yukikozaki0511/robosys2025/actions/workflows/test.yml)
 
 標準入力からテキストを読み込み、行数、単語数、文字数、ユニーク単語数などの統計情報を計算して出力するコマンドです。
 文章の規模や構成を素早く把握するのに適しています。
